@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<!-- Latest compiled and minified CSS --> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Smart Home</title>
+		<style>
+			body 
+			{
+				width:100%;
+				height:auto;
+				background:url("../static/background.jpg") no-repeat;
+				background-size: 100%;
+				background-color:#cccccc;
+			}
+			
+			h1 
+			{
+				text-align:center;
+				color:Lime;
+				font-size:250%;
+			}
+			
+			p.sansserif
+			{
+				font-family:Arial,Helvetica,sans-serif;
+			}
+
+			input
+			{
+				width: 200px;
+				height: 40px;
+			}
+
+			div.bottom_right_area
+			{
+				width:100%;
+				height:60px;
+				position:fixed;
+				bottom:0px;
+				left:0px;
+				background-color:#cccccc;
+			}
+			
+			div.query_button_position
+			{
+				position:fixed;
+				bottom:10px;
+				left:10px;
+			}
+
+			</style>
+    </head>
+    <body>
+		<h1><p class="sansserif">XiaoYin's Smart Home</p></h1>
+		<form method="post" action="{{ url_for('query') }}">
+			<div class="bottom_right_area">
+				<div class="query_button_position">
+					<input type="submit" value="QUERY"/>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
+ 

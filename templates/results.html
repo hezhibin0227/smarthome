@@ -1,0 +1,135 @@
+<html>
+	<!-- Latest compiled and minified CSS --> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Smart Home</title>
+
+		<style>
+			body 
+			{
+				width:100%;
+				height:auto;
+				background-color:#cccccc;
+			}
+			h1 
+			{
+				text-align:center;
+				color:Lime;
+				font-size:250%;
+			}
+			p.sansserif
+			{
+				font-family:Arial,Helvetica,sans-serif;
+			}
+			header
+			{
+				background-color:DodgerBlue;
+				color:white;
+				text-align:center;
+				padding:5px; 
+			}
+			nav
+			{
+				line-height:30px;
+				background-color:#eeeeee;
+				height:450px;
+				width:200px;
+				float:left;
+				padding:5px; 
+			}
+			section
+			{
+				width:650px;
+				float:left;
+				padding:10px; 
+			}
+			footer
+			{
+				background-color:DodgerBlue;
+				color:white;
+				clear:both;
+				text-align:center;
+				padding:5px; 
+			}
+			</style>
+
+			<script>
+				function changeImageOpacity()
+				{
+					var element = document.getElementById("RED_LED_IMG");
+					if ({{RED|tojson}} == 'True')
+					{
+						element.style.opacity=1.0;
+					}
+					else
+					{
+						element.style.opacity=0.2;
+					}
+
+					var element = document.getElementById("GREEN_LED_IMG");
+
+					if ({{GREEN|tojson}} == 'True')
+					{
+						element.style.opacity=1.0;
+					}
+					else
+					{
+						element.style.opacity=0.2;
+					}
+					
+					var element = document.getElementById("BLUE_LED_IMG");
+					if ({{BLUE|tojson}} == 'True')
+					{
+						element.style.opacity=1.0;
+					}
+					else
+					{
+						element.style.opacity=0.2;
+					}
+				}
+			</script>
+
+    </head>
+    <body onload="changeImageOpacity()">
+		<header>
+			<h1>XiaoYin's Smart Home</h1>
+		</header>
+
+		<nav>
+			<img src="../static/RGB_LED.png" width="100" height="100" style="margin-left:40px; margin-top:5px;"/>
+			<br>
+			<img src="../static/time.png" width="100" height="100" style="margin-left:40px; margin-top:5px;"/>
+			<br>
+			<img src="../static/temperature.png" width="100" height="100" style="margin-left:55px; margin-top:5px;"/>
+			<br>
+			<img src="../static/humidity1.png" width="115" height="115" style="margin-left:30px; margin-top:5px;"/>
+		</nav>
+		<section>
+			<img id="RED_LED_IMG" src="../static/red_led.png" width="100" height="100" style="margin-left:75px; margin-top:0px; opacity:0.4;"/>
+			<img id="GREEN_LED_IMG" src="../static/green_led.png" width="100" height="100" style="margin-left:75px; margin-top:0px; opacity:0.4;"/>
+			<img id="BLUE_LED_IMG" src="../static/blue_led.png" width="100" height="100" style="margin-left:75px; margin-top:0px; opacity:0.4;"/>
+			<br><br><br>
+			<input type="text" name="time0" value={{time0|tojson}} size="30" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:50px; border:DodgerBlue 3px solid;">
+			<input type="text" name="time1" value={{time1|tojson}} size="30" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:30px; border:DodgerBlue 3px solid;">
+			<input type="text" name="time2" value={{time2|tojson}} size="30" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:30px; border:DodgerBlue 3px solid;">
+			<br><br><br><br><br>
+			<input type="text" name="temp0" value={{temp0}}℃ size="15" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:50px; border:DodgerBlue 3px solid;">
+			<input type="text" name="temp1" value={{temp1}}℃ size="15" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:30px; border:DodgerBlue 3px solid;">
+			<input type="text" name="temp2" value={{temp2}}℃ size="15" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:30px; border:DodgerBlue 3px solid;">
+			<br><br><br><br><br>
+			<input type="text" name="humd0" value={{humd0}}% size="15" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:50px; border:DodgerBlue 3px solid;">
+			<input type="text" name="humd1" value={{humd1}}% size="15" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:30px; border:DodgerBlue 3px solid;">
+			<input type="text" name="humd2" value={{humd2}}% size="15" readonly="true" style="color:DarkSlateGray; text-align:center; width:150px; height:30px; margin-left:30px; border:DodgerBlue 3px solid;">
+		</section>
+		<footer>
+			<a href=/>
+				<img src="../static/back_main.png" title="Back to main page" width="50" height="50" style="cursor:hand; margin-left:30px; margin-right:30px"/>
+			</a>
+				<img src="../static/refresh.png" title="Refresh this page" width="50" height="50" style="cursor:hand; margin-left:30px; margin-right:30px"" onClick="document.location.reload()"/>
+			<br>
+		</footer>
+	</body>
+</html>
+ 
