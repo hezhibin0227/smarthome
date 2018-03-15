@@ -19,7 +19,7 @@ class wxHandler:
             u"P [n]:-----Play the nth song\n" \
             u"S:----------Stop play\n"\
             u"T:----------Temperature\n"\
-            u"D:---------Humdity\n"\
+            u"D:---------Humidity\n"\
             u"R:---------RED LED on\n"\
             u"G:---------GREEN LED on\n"\
             u"B:---------BLUE LED on\n"\
