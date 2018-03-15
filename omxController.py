@@ -2,10 +2,9 @@
 # -*- coding: UTF-8 -*-
 
 import os
-import time
+import time, thread
+import Xlib.threaded
 from tinytag import TinyTag  # 获取MP3的播放时长
-from pykeyboard import PyKeyboard  # 模拟键盘输入控制omxplayer
-
 
 def createMP3List(mp3Path):
     myMP3List = {}
@@ -26,26 +25,13 @@ def createMP3List(mp3Path):
 class omxplayer:
     def __init__(self, mp3Path):
         self.playerbin = '/usr/bin/omxplayer -o alsa '
-        self.keyboard = PyKeyboard()
         self.mp3List = createMP3List(mp3Path)
 
     def pstop(self, delay):
         time.sleep(delay)
-        #self.keyboard.tap_key('q')  # 退出omxplayer
         str = "killall -9 omxplayer.bin"
         os.system(str)  # 退出omxplayer
         print ("["+ __name__ + "] Log >> " + u'[omxplayer] quit')
-        time.sleep(1)
-
-    def pvolumeUp(self):
-        self.keyboard.tap_key('+', n=3, interval=1)  # 增大音量
-        print ("["+ __name__ + "] Log >> " + u'[omxplayer] volume +')
-        time.sleep(1)
-
-
-    def pvolumeDown(self):
-        self.keyboard.tap_key('-', n=3, interval=1)  # 减小音量
-        print ("["+ __name__ + "] Log >> " + u'[omxplayer] volume -')
         time.sleep(1)
 
     def pplay(self, index):
@@ -57,17 +43,6 @@ class omxplayer:
 
 ##########################testing#################################
 if __name__ == "__main__":
-    try:
-        myPlayer = omxplayer('/home/pi/Music')
-        thread.start_new_thread(myPlayer.pplay, (4,))
-        print ("["+ __name__ + "] Log >> " + "pvolumeDown begin")
-        thread.start_new_thread(myPlayer.pvolumeDown, ())
-        print ("["+ __name__ + "] Log >> " + "pvolumeDown end")
-        thread.start_new_thread(myPlayer.pstop, (10,))
-
-    except:
-        print ("["+ __name__ + "] Log >> " + "Error: unable to start thread")
-
-    while 1:
-        pass
+    myPlayer = omxplayer('/home/pi/Music')
+    myPlayer.pplay(3)
 

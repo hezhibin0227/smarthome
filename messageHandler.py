@@ -4,6 +4,7 @@
 import thread
 from omxController import omxplayer
 from RGBController import RGBLedSetter
+from redisStore import redisDB
 from setenv import env_mp3_location
 import sys
 if sys.getdefaultencoding()!='utf-8':
@@ -17,8 +18,8 @@ class wxHandler:
             u"L:----------List of songs\n" \
             u"P [n]:-----Play the nth song\n" \
             u"S:----------Stop play\n"\
-            u"+:---------Increase volume\n"\
-            u"-:----------Decrease volume\n"\
+            u"T:----------Temperature\n"\
+            u"D:---------Humdity\n"\
             u"R:---------RED LED on\n"\
             u"G:---------GREEN LED on\n"\
             u"B:---------BLUE LED on\n"\
@@ -29,6 +30,7 @@ class wxHandler:
         self.myPlayer = omxplayer(env_mp3_location)  # 初始化omxplayer
         self.mp3index = 0  # 播放列表指针，默认指向第0首
         self.myLedSetter = RGBLedSetter()  # 初始化LED Controller
+        self.myRedis = redisDB()  # 初始化Redis读取器
 
 
     def msg_handler(self, args):
@@ -61,12 +63,12 @@ class wxHandler:
             elif arg.upper() == u'S':  # 停止播放
                 self.myPlayer.pstop(0.1)
                 res = "Play stopped"
-            elif arg == u'+':  # 增大音量
-                self.myPlayer.pvolumeUp()
-                res = "Volume is increased"
-            elif arg == u'-':  # 减小音量
-                self.myPlayer.pvolumeDown()
-                res = "Volume is decreased"
+            elif arg.upper() == u'T':  # 温度
+                content = self.myRedis.read_content()
+                res = content['time0'] + "\n\nTemperature is: " + content['temp0'] + "℃" 
+            elif arg.upper() == u'D':  # 湿度
+                content = self.myRedis.read_content()
+                res = content['time0'] + "\n\nHumditiy is: " + content['humd0'] + "%"
             elif arg.upper() == u'R':  # LED显示红色
                 self.myLedSetter.R_Led_on()
                 res = "RED LED is On"
