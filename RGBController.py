@@ -16,17 +16,17 @@ class RGBLedSetter:
         GPIO.setwarnings(False)        # Disable warnings
         GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
         GPIO.setup(self.R_LED, GPIO.OUT)  # Set pins' mode is output
-        GPIO.output(self.R_LED, GPIO.HIGH)  # Set pins to high(+3.3V) to off led
+        GPIO.output(self.R_LED, GPIO.LOW)  # Set pins to high(+3.3V) to off led
         GPIO.setup(self.G_LED, GPIO.OUT)
-        GPIO.output(self.G_LED, GPIO.HIGH)
+        GPIO.output(self.G_LED, GPIO.LOW)
         GPIO.setup(self.B_LED, GPIO.OUT)
-        GPIO.output(self.B_LED, GPIO.HIGH)
+        GPIO.output(self.B_LED, GPIO.LOW)
 
-        self.p_R = GPIO.PWM(self.R_LED, 100)  # set Frequece to 2KHz
-        self.p_G = GPIO.PWM(self.G_LED, 100)
-        self.p_B = GPIO.PWM(self.B_LED, 100)
+        self.p_R = GPIO.PWM(self.R_LED, 2000)  # set Frequece to 2KHz
+        self.p_G = GPIO.PWM(self.G_LED, 2000)
+        self.p_B = GPIO.PWM(self.B_LED, 2000)
 
-        self.p_R.start(0)      # Initial duty Cycle = 100(leds off)
+        self.p_R.start(0)      # Initial duty Cycle = 0(leds off)
         self.p_G.start(0)
         self.p_B.start(0)
 
