@@ -18,14 +18,17 @@ Smart home project use weChat to communicate with Raspberry Pi, which will use G
 <div align=left><img width="600" height="300" src="https://raw.githubusercontent.com/lxyoutlook/smarthome/master/common/images/codelist.png"/></div>
 
 ## Usage
+ssh to your Raspberry PI
 ```Bash
 python wxMain.py
 ```
-
 ```Bash
 python DHT11.py
 ```
-
+Use Cloud Foundry CLI to push webapp to Pivotal Web Services
+```Bash
+cf push MonitorApp
+```
 
 
 
