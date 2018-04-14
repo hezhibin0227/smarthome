@@ -3,7 +3,7 @@
 Smart home project use weChat to communicate with Raspberry Pi, which will use GPIO to controll sensors and do some interesting things.
 
 Project Concept
-![](https://raw.githubusercontent.com/lxyoutlook/smarthome/master/common/images/concept.png)
+<div align=center><img width="150" height="150" src="https://raw.githubusercontent.com/lxyoutlook/smarthome/master/common/images/concept.png"/></div>
 <br>
 System Architecture
 ![](https://raw.githubusercontent.com/lxyoutlook/smarthome/master/common/images/architecuture.png)
