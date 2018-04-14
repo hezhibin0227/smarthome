@@ -1,6 +1,7 @@
 # Xiaoyin's smart home project
 
 ![py27][py27]
+
 Smart home project use weChat to communicate with Raspberry Pi, which will use GPIO to controll sensors and do some interesting things.
 
 ## Project Concept
