@@ -5,7 +5,7 @@
 Smart home project use weChat to communicate with Raspberry Pi, which will do some interesting things.
 
 ## Project Concept
-<div align=left><img width="550" height="280" src="https://raw.githubusercontent.com/lxyoutlook/smarthome/master/common/images/concept.png"/></div>
+<div align=left><img width="580" height="280" src="https://raw.githubusercontent.com/lxyoutlook/smarthome/master/common/images/concept.png"/></div>
 
 ## System Architecture
 <div align=left><img width="650" height="300" src="https://raw.githubusercontent.com/lxyoutlook/smarthome/master/common/images/architecuture.png"/></div>
